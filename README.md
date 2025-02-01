@@ -53,5 +53,7 @@ Now just make the recording on the pendrive with the dd command as root user:
  $ sudo dd if=MultiCortex_EXO_1.0.5.x86_64-1.15.6.iso of=/dev/sdb conv=notrunc bs=4M;sync
 
 ```
-# oneAPI plug and play!
+More information : https://en.opensuse.org/User:Cabelo/MultiCortex-EXO
+
+# EXO plug and play!
 [![Exo3](https://github.com/user-attachments/assets/98b47abc-1a18-4cef-af4a-eab1fb30bcec)](https://www.youtube.com/watch?v=p65bA9IKTYk)
