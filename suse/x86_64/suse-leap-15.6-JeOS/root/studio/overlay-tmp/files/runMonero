@@ -1,0 +1,4 @@
+#/usr/bin/gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Shell.desktop','google-chrome.desktop']"
+#/usr/bin/gsettings set org.gnome.desktop.interface monospace-font-name 'Monospace 12'
+#/usr/bin/gsettings set org.gnome.desktop.interface gtk-theme Dark
+

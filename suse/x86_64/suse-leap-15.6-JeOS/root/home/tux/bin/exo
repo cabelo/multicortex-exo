@@ -1,0 +1,3 @@
+cd ~/exo
+source .venv/bin/activate
+exo

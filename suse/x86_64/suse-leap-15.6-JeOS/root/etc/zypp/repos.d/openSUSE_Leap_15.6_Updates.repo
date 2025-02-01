@@ -1,0 +1,7 @@
+[openSUSE_Leap_15.6_Updates]
+name=openSUSE_Leap_15.6_Updates
+baseurl=http://download.opensuse.org/update/leap/15.6/oss/
+type=rpm-md
+enabled=1
+autorefresh=1
+gpgcheck=1

@@ -1,0 +1,150 @@
+# This script is called from /etc/init.d/boot.local. It is intended to run
+# only on first boot so it deletes itself after running.
+
+# How is the network configured?
+NETWORK_CONFIG=network_manager
+
+# Always use DHCP when in Testdrive.
+setup_dhcp() {
+  sed -i '/^STARTMODE/c STARTMODE=auto' etc/sysconfig/network/ifcfg-$1
+  sed -i '/^BOOTPROTO/c BOOTPROTO=dhcp' etc/sysconfig/network/ifcfg-$1
+  sed -i '/^IPADDR/c IPADDR=' etc/sysconfig/network/ifcfg-$1
+  sed -i '/^NETMASK/c NETMASK=' etc/sysconfig/network/ifcfg-$1
+}
+
+# Disable selected KDE desktop effects for Testdrive so it is not slow over the
+# network. Basically, all zooming, sliding, fading and transparency is disabled.
+disable_kde_desktop_effects() {
+  [ -d /etc/kde4/share/config ] || return 0
+
+  cat > /etc/kde4/share/config/kwinrc <<-'EOF'
+[Plugins]
+kwin4_effect_blurEnabled=false
+kwin4_effect_dashboardEnabled=false
+kwin4_effect_desktopgridEnabled=false
+kwin4_effect_dialogparentEnabled=false
+kwin4_effect_fadeEnabled=false
+kwin4_effect_loginEnabled=false
+kwin4_effect_logoutEnabled=false
+kwin4_effect_minimizeanimationEnabled=false
+kwin4_effect_presentwindowsEnabled=false
+kwin4_effect_resizeEnabled=false
+kwin4_effect_screenshotEnabled=false
+kwin4_effect_slideEnabled=false
+kwin4_effect_slidingpopupsEnabled=false
+kwin4_effect_startupfeedbackEnabled=false
+kwin4_effect_translucencyEnabled=false
+kwin4_effect_zoomEnabled=false
+EOF
+}
+
+disable_vmtoolsd() {
+  [ -x /usr/bin/vmtoolsd ] && insserv -r vmtoolsd
+}
+
+# enable console autologin for systemd distributions
+enable_autologin_if_required() {
+  if [ -e /etc/systemd/system/autologin@.service ]; then
+    systemctl disable getty@tty1
+    systemctl -f enable autologin@tty1
+    # workaround for the fix of bnc#804158 (check bnc#807289 for further details)
+    ln -s /etc/systemd/system/autologin@.service /etc/systemd/system/getty@tty1.service
+    systemctl restart autologin@tty1
+  fi
+}
+
+is_testdrive() {
+  journalctl | grep -q "DMI: SUSE Studio Testdrive";
+}
+
+# Adopted code from /etc/sysconfig/network/scripts/functions of
+# package sysconfig-network
+get_iface_type () {
+  local IF=$1 TYPE
+  test -n "$IF" || return 1
+  test -d /sys/class/net/$IF || return 2
+  case "`cat /sys/class/net/$IF/type`" in
+    1)
+      TYPE=eth
+      # Ethernet, may also be wireless, ...
+      if test -d /sys/class/net/$IF/wireless -o \
+              -L /sys/class/net/$IF/phy80211 ; then
+        TYPE=wlan
+      elif test -d /sys/class/net/$IF/bridge ; then
+        TYPE=bridge
+      elif test -f /proc/net/vlan/$IF ; then
+        TYPE=vlan
+      elif test -d /sys/class/net/$IF/bonding ; then
+        TYPE=bond
+      elif test -f /sys/class/net/$IF/tun_flags ; then
+        TYPE=tap
+      elif test -d /sys/devices/virtual/net/$IF ; then
+        case $IF in
+          (dummy*) TYPE=dummy ;;
+        esac
+      fi
+      ;;
+    24)  TYPE=eth ;; # firewire ;; # IEEE 1394 IPv4 - RFC 2734
+  esac
+  test -n "$TYPE" && echo $TYPE && return 0
+  return 3
+}
+
+# Handles dynamic configuration of network interfaces during initial boot and
+# and configures DHCP if the appliance runs in testdrive
+configure_network_interfaces() {
+  echo "Configuring network interfaces"
+  for i in `ls -1 /sys/class/net/ 2>/dev/null` ; do
+    if test -d /sys/class/net/$i; then
+      if [[ $(get_iface_type $i) = "eth" ]]; then
+        echo "Configuring network interface '$i'"
+        cp /studio/ifcfg.template.studio /etc/sysconfig/network/ifcfg-$i
+        if is_testdrive; then
+          setup_dhcp $i
+        fi
+      fi
+    fi
+  done
+  rm /studio/ifcfg.template.studio
+  case $NETWORK_CONFIG in
+    dhcp|manual)
+      systemctl enable network.service 
+      systemctl restart network.service
+      ;;
+    network_manager)
+      systemctl stop network.service
+      systemctl --force enable NetworkManager.service
+      systemctl restart network.service
+      ;;
+  esac
+}
+
+configure_network_interfaces
+# ===========================================
+# Check if we are in testdrive 
+# -------------------------------------------
+
+echo -n "Checking if we are in SUSE Studio TestDrive... "
+if is_testdrive; then
+    echo "yes"
+    disable_vmtoolsd
+    disable_kde_desktop_effects
+else
+    echo "no"
+    rm /etc/X11/xorg.conf.d/50-*-testdrive.conf
+fi 
+
+enable_autologin_if_required
+
+# Workaround for Leap 42.1 beta
+systemctl restart sshd
+/usr/bin/gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Terminal.desktop','google-chrome.desktop']"
+/usr/bin/gsettings set org.gnome.desktop.interface monospace-font-name 'Monospace 12'
+/usr/bin/gsettings set org.gnome.desktop.interface gtk-theme Dark
+/usr/bin/gsettings set org.gnome.desktop.background picture-uri "file:////usr/share/wallpapers/studio_wallpaper.jpg"
+
+# delete itself, as we only need this to run on first boot
+systemctl disable suse-studio-firstboot
+rm -f /etc/systemd/system/suse-studio-firstboot.service
+rm -f /etc/init.d/suse_studio_firstboot
+

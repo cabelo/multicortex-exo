@@ -1,0 +1,11 @@
+<background>
+ <static>
+  <duration>8640000.0</duration>
+  <file>
+   <size width="1280" height="1024">/usr/share/wallpapers/studio_wallpaper.jpg</size>
+   <size width="1600" height="1200">/usr/share/wallpapers/studio_wallpaper.jpg</size>
+   <size width="1920" height="1080">/usr/share/wallpapers/studio_wallpaper.jpg</size>
+   <size width="1920" height="1200">/usr/share/wallpapers/studio_wallpaper.jpg</size>
+  </file>
+ </static>
+</background>

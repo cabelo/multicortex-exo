@@ -1,0 +1,71 @@
+#! /usr/bin/perl
+
+sub copy_files;
+sub update_default;
+
+$theme = "openSUSE";
+
+$grub2_default = "/etc/default/grub";
+$grub2_theme_dir = "/boot/grub2/themes";
+$grub2_share_dir = "/usr/share/grub2";
+
+copy_files;
+update_default;
+
+sub copy_files
+{
+  system "rm -rf $grub2_theme_dir";
+
+  system "mkdir -p $grub2_theme_dir";
+  system "cp -r $grub2_share_dir/themes/$theme $grub2_theme_dir";
+  unlink "$grub2_theme_dir/$theme/activate-theme";
+
+  open $f, '<', $grub2_default;
+  while (<$f>) {
+    $gfx_mode = $1, last if /^\s*GRUB_GFXMODE\s*=\s*(\S+)/;
+  }
+  close $f;
+
+  $back = "$grub2_share_dir/backgrounds/$theme/$gfx.png";
+  $back = "$grub2_share_dir/backgrounds/$theme/default-43.png" unless -f $back;
+
+  system "cp $back $grub2_theme_dir/$theme/background.png";
+  system "cp $back $grub2_theme_dir/$theme/terminal-background.png";
+}
+
+sub update_default
+{
+  # skip if there's no grub2 config
+  return unless -f $grub2_default;
+
+  open $f, '<', $grub2_default;
+  my @f = (<$f>);
+  close $f;
+
+  $l_b = "GRUB_BACKGROUND=$grub2_theme_dir/$theme/background.png\n";
+  $l_t = "GRUB_THEME=$grub2_theme_dir/$theme/theme.txt\n";
+
+  # modify existing entry, or...
+  for (@f) {
+    if(/^\s*#?\s*GRUB_BACKGROUND\s*=/) {
+      $_ = $l_b;
+      $ok_b = 1;
+    }
+    if(/^\s*#?\s*GRUB_THEME\s*=/) {
+      $_ = $l_t;
+      $ok_t = 1;
+    }
+  }
+
+  # ... add a new entry
+  push @f, $l_b if !$ok_b;
+  push @f, $l_t if !$ok_t;
+
+  open $f, '>', "$grub2_default.tmp";
+  print $f @f;
+  close $f;
+
+  rename $grub2_default, "$grub2_default.old";
+  rename "$grub2_default.tmp", $grub2_default;
+}
+

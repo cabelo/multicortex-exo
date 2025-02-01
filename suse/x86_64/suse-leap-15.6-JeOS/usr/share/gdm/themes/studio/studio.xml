@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<!DOCTYPE greeter SYSTEM "greeter.dtd">
+
+<greeter>
+
+  <!-- first we take care of the background stuff -->
+  <item type="rect">
+    <normal color="#cccccc"/>
+    <pos x="0" y="0" width="100%" height="100%"/>
+  </item>
+
+  <item type="pixmap">
+    <normal file="background.png" alpha="1"/>
+    <pos x="0" y="0" width="100%" height="100%"/>
+  </item>
+
+	<!-- logo -->
+	<item type="pixmap">
+		<normal file="logo.png" alpha="1"/>
+		<pos y="0" x="0" width="64" height="64"/>
+	</item> 
+
+	<!-- timer -->
+  <item type="rect" id="timed-rect">
+    <show type="timed"/>
+    <normal color="#FFFFFF" alpha="0.1"/>
+    <pos anchor="c" x="50%" y="75%" width="box" height="box"/>
+    <box orientation="vertical" min-width="400" xpadding="10" ypadding="5" spacing="0">
+      <item type="label" id="timed-label">
+        <normal color="#ffffff" font="Sans 12"/>
+        <pos x="50%" anchor="n"/>
+	<!-- Stock label for: User %s will login in %d seconds -->
+	<stock type="timed-label"/>
+      </item>
+    </box>
+  </item>
+
+  <!-- the login box contents, positioned freely -->
+	<item type="rect">
+		<pos y="40%" x="50%" width="box" height="box" anchor="c"/>
+		<box ypadding="5" xpadding="5" spacing="25" orientation="horizontal">
+
+
+		
+		
+		 <item type="rect">
+				<pos width="box" height="box" />
+				<box ypadding="5" xpadding="5" spacing="15" orientation="vertical">
+
+		<!-- balance out the caps-lock and timer spacing below -->
+
+					<!-- filler -->
+					<item type="rect">
+						<pos width="200" height="60"/>
+					</item>
+					
+
+							<item type="label" id="pam-prompt">
+								<pos x="0" min-width="100"/>
+								<normal font="Sans Bold 12" color="#ffffff"/>
+								<stock type="username-label"/>
+							</item>
+							
+							<item type="rect">
+								<normal color="#000000"/>
+								<pos width="200" height="24"/>
+								<fixed>
+									<item type="entry" id="user-pw-entry">
+										<normal font="Sans 12" />
+										<pos y="1" x="1" width="-2" height="-2" anchor="nw"/>
+									</item>
+								</fixed>
+							</item>
+		
+							<item type="label" id="pam-message">
+								<pos x="0" min-width="100" />
+								<normal font="Sans 11" color="#ffffff" alpha="0.5"/>
+								<text> </text>
+							</item>
+
+<![CDATA[
+					<!-- domain label + combo -->
+							<item type="label" id="domain-label">
+								<pos x="0" min-width="100"/>
+								<normal font="Sans 12" color="#ffffff"/>
+								<stock type="domain-label"/>
+							</item>
+							
+							<item type="rect" id="domain-rect-1">
+								<normal color="#000000"/>
+								<pos width="200" height="24"/>
+								<fixed>
+									<item type="combo-box-entry" id="domain-entry">
+										<pos y="1" x="1" width="-2" height="-2" anchor="nw"/>
+									</item>
+								</fixed>
+							</item>	
+]]>
+					<!-- filler -->
+					<item type="rect">
+						<pos width="200" height="30"/>
+					</item>
+					
+					<!-- caps lock warning -->
+					<item type="label" id="caps-lock-warning">
+						<pos x="0" anchor="nw"/>
+						<normal font="Sans 12" color="#ffffff"/>
+						<stock type="caps-lock-warning"/>
+					</item>
+					
+					
+				</box>
+			</item>
+					</box>
+	</item>
+
+		<item type="label" id="pam-error">
+			<pos x="50%" y="70%" anchor="c" />
+			<normal font="Sans Bold 12" color="#ffffff"/>
+			<text> </text>
+		</item>
+
+<!-- session/language/disconnect buttons -->
+  <item type="rect">
+    <pos y="100%" x="20" width="100%" height="10%" anchor="sw"/>
+    <box xpadding="10" spacing="10" orientation="horizontal">
+      <item type="rect" id="language_button" button="true">
+        <pos y="50%" width="box" height="box" anchor="w"/>
+        <box xpadding="0" spacing="2" orientation="horizontal">
+          <item type="label">
+            <normal font="Sans 12" color="#ffffff" alpha="0.5"/>
+            <prelight font="Sans 12" color="#ffffff" alpha="1"/>
+            <active font="Sans 12" color="#ffffff" alpha="1"/>
+            <pos y="50%" anchor="w"/>
+            <stock type="language"/>
+          </item>
+        </box>
+      </item>
+      <item type="rect" id="session_button" button="true">
+        <pos y="50%" width="box" height="box" anchor="w"/>
+        <box xpadding="0" spacing="2" orientation="horizontal">
+					<item type="pixmap">
+						<normal file="dots.png" alpha="1.0"/>
+						<pos x="0" y="0" width="100%" height="100%"/>
+					</item>
+
+          <item type="label">
+            <normal font="Sans 12" color="#ffffff" alpha="0.5"/>
+            <prelight font="Sans 12" color="#ffffff" alpha="1"/>
+            <active font="Sans 12" color="#ffffff" alpha="1"/>
+            <pos y="50%" anchor="w"/>
+            <stock type="session"/>
+          </item>
+        </box>
+      </item>
+      <item type="rect" id="reboot_button" button="true">
+        <show type="reboot" modes="console"/>
+        <pos y="50%" width="box" height="box" anchor="w"/>
+        <box xpadding="0" spacing="2" orientation="horizontal">
+					<item type="pixmap">
+						<normal file="dots.png" alpha="1.0"/>
+						<pos x="0" y="0" width="100%" height="100%"/>
+					</item>
+
+          <item type="label">
+            <normal font="Sans 12" color="#ffffff" alpha="0.5"/>
+            <prelight font="Sans 12" color="#ffffff" alpha="1"/>
+            <active font="Sans 12" color="#ffffff" alpha="1"/>
+            <pos y="50%" anchor="w"/>
+            <stock type="reboot"/>
+          </item>
+        </box>
+      </item>
+      <item type="rect" id="halt_button" button="true">
+        <show type="halt" modes="console"/>
+        <pos y="50%" width="box" height="box" anchor="w"/>
+        <box xpadding="0" spacing="2" orientation="horizontal">
+					<item type="pixmap">
+						<normal file="dots.png" alpha="1"/>
+						<pos x="0" y="0" width="100%" height="100%"/>
+					</item>
+
+          <item type="label">
+            <normal font="Sans 12" color="#ffffff" alpha="0.5"/>
+            <prelight font="Sans 12" color="#ffffff" alpha="1"/>
+            <active font="Sans 12" color="#ffffff" alpha="1"/>
+            <pos y="50%" anchor="w"/>
+            <stock type="halt"/>
+          </item>
+        </box>
+      </item>
+      <item type="rect" id="disconnect_button" button="true">
+        <normal/>
+        <show modes="flexi,remote"/>
+        <pos y="50%" width="box" height="box" anchor="w"/>
+        <box xpadding="0" spacing="2" orientation="horizontal">
+					<item type="pixmap">
+						<normal file="dots.png" alpha="1"/>
+						<pos x="0" y="0" width="100%" height="100%"/>
+					</item>
+
+          <item type="label">
+            <normal font="Sans 12" color="#ffffff" alpha="0.5"/>
+            <prelight font="Sans 12" color="#ffffff" alpha="1"/>
+            <active font="Sans 12" color="#ffffff" alpha="1"/>
+            <pos y="50%" anchor="w"/>
+            <stock type="disconnect"/>
+            <show modes="remote"/>
+          </item>
+          <item type="label">
+            <normal font="Sans 12" color="#ffffff" alpha="0.5"/>
+            <prelight font="Sans 12" color="#ffffff" alpha="1"/>
+            <active font="Sans 12" color="#ffffff" alpha="1"/>
+            <pos y="50%" anchor="w"/>
+            <stock type="quit"/>
+            <show modes="flexi"/>
+          </item>
+        </box>
+      </item>
+    </box>
+  </item>
+
+</greeter>
+
+

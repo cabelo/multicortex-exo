@@ -1,0 +1,56 @@
+# openSUSE grub2 theme
+
+desktop-image: "background.png"
+
+title-text: ""
+
+terminal-box: "terminal_box_*.png"
+terminal-font: "Gnu Unifont Mono Regular 16"
+
++ boot_menu {
+  left = 18%
+  width = 64%
+  top = 33%
+  height = 45%	
+
+  item_font = "DejaVu Sans Bold 14"
+  item_color = "#fff"
+  item_height = 32
+  item_icon_space = 8
+  item_spacing = 2
+
+  selected_item_font = "DejaVu Sans Bold 14"
+  selected_item_color= "#000"
+  selected_item_pixmap_style = "select_*.png"
+
+  icon_height = 0
+  icon_width = 0
+
+  scrollbar = true
+  scrollbar_width = 20
+  scrollbar_thumb = "slider_*.png"
+}
+
++ progress_bar {
+  id = "__timeout__"
+
+  left = 18%
+  width = 64%
+  top = 85%
+  height = 32
+
+  font = "DejaVu Sans Regular 12"
+
+  text_color = "#fff"
+  fg_color = "#63a63d"
+
+  bg_color = "#000"
+  #border_color = "#fff"
+
+  # instead of the above colors, use pixmaps
+  # bar_style = "progress_bar_*.png"
+  # highlight_style = "progress_highlight_*.png"
+
+  text = "@TIMEOUT_NOTIFICATION_LONG@"
+}
+

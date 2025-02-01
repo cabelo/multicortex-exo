@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=openSUSE Leap 42.1 theme
+Description=openSUSE Leap 42.1 Plymouth theme
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/openSUSE
+ScriptFile=/usr/share/plymouth/themes/openSUSE/openSUSE.script

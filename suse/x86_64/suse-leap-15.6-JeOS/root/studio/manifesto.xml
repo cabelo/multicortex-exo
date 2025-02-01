@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <studio_uuid>8466bd24-fd59-11df-9f90-475ae2f5345b</studio_uuid>
+  <appliance_uuid>8c7f385c-19b7-11e7-f0b0-4fbb28ae4d82</appliance_uuid>
+  <config>
+    <image name="OSAR_OpenSUSE_Augmented_Reality" displayname="OSAR_OpenSUSE_Augmented_Reality" schemaversion="5.2">
+      <description type="system">
+        <author>Alessandro de Oliveira Faria (A.K.A.CABELO)</author>
+        <contact>studio-devel@suse.de</contact>
+        <specification>openSUSE Leap 42.1 GNOME</specification>
+      </description>
+      <preferences>
+        <type checkprebuilt="true" boot="isoboot/suse-leap42.1" fsnocheck="true" bootloader="grub2" firmware="uefi" flags="overlay" hybrid="true" image="iso">
+          <split>
+            <temporary>
+              <file name="/var"/>
+              <file name="/var/*"/>
+              <file name="/etc"/>
+              <file name="/etc/*"/>
+              <file name="/tmp"/>
+              <file name="/tmp/*"/>
+              <file name="/home"/>
+              <file name="/home/*"/>
+            </temporary>
+          </split>
+        </type>
+        <version>0.99.18</version>
+        <packagemanager>ensconce</packagemanager>
+        <rpm-check-signatures>false</rpm-check-signatures>
+        <rpm-force>false</rpm-force>
+        <boot-theme>studio</boot-theme>
+        <timezone>UTC</timezone>
+        <hwclock>localtime</hwclock>
+        <locale>en_US</locale>
+      </preferences>
+      <users group="users">
+        <user name="osar" pwd="$1$zOc02rEh$iGgvRki56eUmwil27JzCW1" home="/home/osar" shell="/bin/bash"/>
+      </users>
+      <users group="root">
+        <user name="root" pwd="$1$T7GRqjk8$S.3tc1EaLq3fMpC2rA0a30" home="/root" shell="/bin/bash"/>
+      </users>
+      <repository type="rpm-md">
+        <source path="http://download.opensuse.org/repositories/openSUSE:/Leap:/42.1/standard/"/>
+      </repository>
+      <repository type="rpm-md">
+        <source path="http://download.opensuse.org/update/leap/42.1/oss/"/>
+      </repository>
+      <repository type="rpm-md">
+        <source path="http://download.opensuse.org/repositories/home:cabelo/openSUSE_Leap_42.1/"/>
+      </repository>
+      <repository type="rpm-md">
+        <source path="http://download.opensuse.org/repositories/home:cabelo:games/openSUSE_Leap_42.1/"/>
+      </repository>
+      <packages type="image" patternType="onlyRequired">
+        <package name="levelhead"/>
+        <package name="xf86-video-intel"/>
+        <package name="ucode-intel"/>
+        <package name="iwscanner"/>
+        <package name="wpa_supplicant-gui"/>
+        <package name="firmwarekit"/>
+        <package name="mpt-firmware"/>
+        <package name="adaptec-firmware"/>
+        <package name="atmel-firmware"/>
+        <package name="FirmwareUpdateKit"/>
+        <package name="bluez-firmware"/>
+        <package name="alsa-firmware"/>
+        <package name="kernel-firmware"/>
+        <package name="python-gstreamer-0_10"/>
+        <package name="gstreamer-0_10-doc"/>
+        <package name="gstreamer-0_10-libnice"/>
+        <package name="gstreamer-0_10-plugins-good-doc"/>
+        <package name="gstreamer-0_10-plugins-bad-doc"/>
+        <package name="gstreamer-0_10-plugins-base-doc"/>
+        <package name="gstreamer-plugins-good"/>
+        <package name="ipw-firmware"/>
+        <package name="iw"/>
+        <package name="wireless-tools"/>
+        <package name="NetworkManager-gnome-lang"/>
+        <package name="NetworkManager-gnome"/>
+        <package name="cheese-lang"/>
+        <package name="cheese"/>
+        <package name="libgstreamer-1_0-0"/>
+        <package name="gstreamer-0_10-plugins-buzztard"/>
+        <package name="gstreamer-0_10-utils-unversioned"/>
+        <package name="gstreamer-0_10-plugins-ugly-doc"/>
+        <package name="gstreamer-0_10-plugins-bad-devel"/>
+        <package name="gstreamer-0_10-plugins-ugly-lang"/>
+        <package name="gstreamer-0_10-plugins-base-devel"/>
+        <package name="gstreamer-0_10-plugins-bad-lang"/>
+        <package name="gstreamer-0_10-devel"/>
+        <package name="gstreamer-0_10-plugin-esd"/>
+        <package name="gstreamer-0_10-plugins-base-lang"/>
+        <package name="gstreamer-0_10-lang"/>
+        <package name="gstreamer-0_10-plugins-good-lang"/>
+        <package name="libgstreamer-0_10-0"/>
+        <package name="gstreamer-0_10-plugin-gnomevfs"/>
+        <package name="gstreamer-0_10-utils"/>
+        <package name="gstreamer-0_10"/>
+        <package name="gstreamer-0_10-plugins-good-extra"/>
+        <package name="gstreamer-0_10-plugins-good"/>
+        <package name="gstreamer-0_10-plugins-ugly"/>
+        <package name="gstreamer-0_10-plugins-bad"/>
+        <package name="gstreamer-0_10-plugins-base"/>
+        <package name="libosgART2"/>
+        <package name="shim" bootinclude="true"/>
+        <package name="grub2"/>
+        <package name="grub2-x86_64-efi"/>
+        <package name="gimp"/>
+        <package name="gimp-lang"/>
+        <package name="blender"/>
+        <package name="blender-lang"/>
+        <package name="osgART2-devel"/>
+        <package name="osgART2"/>
+        <package name="libOpenSceneGraph80"/>
+        <package name="OpenSceneGraph"/>
+        <package name="libOpenThreads12"/>
+        <package name="libOpenThreads-devel"/>
+        <package name="libOpenSceneGraph-devel"/>
+        <package name="OpenSceneGraph-examples"/>
+        <package name="OpenSceneGraph-plugins"/>
+        <package name="patterns-openSUSE-devel_C_C++"/>
+        <package name="patterns-openSUSE-gnome"/>
+        <package name="patterns-openSUSE-gnome_utilities"/>
+        <package name="patterns-openSUSE-minimal_base"/>
+        <package name="gnome-power-manager"/>
+        <package name="gnome-terminal"/>
+        <package name="gtk3-branding-openSUSE"/>
+        <package name="gvfs-backends"/>
+        <package name="libgnomesu"/>
+        <package name="gnote"/>
+        <package name="yast2-control-center-gnome"/>
+        <package name="sax3"/>
+        <package name="x11-tools"/>
+        <package name="xorg-x11"/>
+        <package name="xorg-x11-driver-input"/>
+        <package name="xorg-x11-driver-video"/>
+        <package name="xorg-x11-fonts"/>
+        <package name="grub2-branding-openSUSE"/>
+        <package name="gfxboot-branding-openSUSE"/>
+        <package name="yast2-x11"/>
+        <package name="SuSEfirewall2"/>
+        <package name="less"/>
+        <package name="yast2-firstboot"/>
+        <package name="e2fsprogs"/>
+        <package name="branding-openSUSE"/>
+        <package name="patterns-openSUSE-base"/>
+        <package name="iputils"/>
+        <package name="kernel-default"/>
+        <package name="plymouth"/>
+        <package name="syslog-ng"/>
+        <package name="vim"/>
+        <package name="zypper"/>
+        <package name="timezone"/>
+        <package name="gsettings-backend-dconf"/>
+        <package name="glibc"/>
+        <package name="glibc-locale"/>
+        <package name="yast2-live-installer"/>
+        <package name="yast2-users"/>
+        <package name="btrfsprogs"/>
+        <archive name="plymouth.tar" bootinclude="true"/>
+        <package name="gfxboot-devel" bootinclude="true"/>
+        <archive name="gdm.tar"/>
+      </packages>
+      <packages type="bootstrap">
+        <package name="filesystem"/>
+        <package name="glibc-locale"/>
+        <package name="module-init-tools"/>
+      </packages>
+    </image>
+  </config>
+  <extra_config name="OSAR_OpenSUSE_Augmented_Reality">
+    <appliance_id>1702228</appliance_id>
+    <arch>x86_64</arch>
+    <version>0.99.18</version>
+    <logo>73/8df48f1c1d4172af6f7188e227871d</logo>
+    <background>4b/2c4dbaca27f5f52eb096283c5abff1</background>
+    <base_system>Leap_42.1</base_system>
+    <image_type>iso</image_type>
+    <time_zone>UTC</time_zone>
+    <region>Global</region>
+    <default_runlevel>5</default_runlevel>
+    <install_recommended>false</install_recommended>
+    <xen_host>false</xen_host>
+    <exclude_docs>false</exclude_docs>
+    <disable_branding>false</disable_branding>
+    <template>openSUSE Leap 42.1, GNOME desktop</template>
+    <locale>
+      <language>en_US.UTF-8</language>
+      <keytable>us.map.gz</keytable>
+    </locale>
+    <estimated_size>3020</estimated_size>
+    <size_offset>0</size_offset>
+    <non_interactive/>
+    <oem_disk_size>16G</oem_disk_size>
+    <check_supportability>false</check_supportability>
+    <repository type="rpm-md">
+      <source path="http://download.opensuse.org/repositories/openSUSE:/Leap:/42.1/standard/" internal="false"/>
+      <name>openSUSE Leap 42.1 OSS</name>
+    </repository>
+    <repository type="rpm-md">
+      <source path="http://download.opensuse.org/update/leap/42.1/oss/" internal="false"/>
+      <name>openSUSE Leap 42.1 Updates</name>
+    </repository>
+    <repository type="rpm-md">
+      <source path="http://download.opensuse.org/repositories/home:cabelo/openSUSE_Leap_42.1/" internal="false"/>
+      <name>home:cabelo Leap_42.1</name>
+    </repository>
+    <repository type="rpm-md">
+      <source path="http://download.opensuse.org/repositories/home:cabelo:games/openSUSE_Leap_42.1/" internal="false"/>
+      <name>home:cabelo:games Leap_42.1</name>
+    </repository>
+    <network config="network_manager">
+    </network>
+    <startup_programs>
+    </startup_programs>
+    <overlay_files remove="">
+    </overlay_files>
+    <firewall>
+      <firewall_enabled>no</firewall_enabled>
+      <firewall_ssh>opened</firewall_ssh>
+      <firewall_http>opened</firewall_http>
+      <firewall_webyast>closed</firewall_webyast>
+    </firewall>
+    <webyast enabled="false" version="">
+    </webyast>
+    <auto_login user_name="osar" home_dir="/home/osar"/>
+    <x_keyboard model="microsoftpro" layout="us" variant="" keycode="xfree86" LA="" RA="" SL="" RC="" OPT=""/>
+    <enable_root_firstboot>false</enable_root_firstboot>
+    <window_manager>gnome</window_manager>
+    <display_manager>gdm</display_manager>
+  </extra_config>
+</manifest>

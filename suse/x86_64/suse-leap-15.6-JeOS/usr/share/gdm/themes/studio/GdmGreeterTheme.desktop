@@ -1,0 +1,8 @@
+[GdmGreeterTheme]
+Encoding=UTF-8
+Greeter=studio.xml
+Name=Studio
+Description=Theme for SUSE Studio appliance
+Author=SUSE Studio user
+Copyright=(c) 2018 Novell, Inc.
+Screenshot=preview.png

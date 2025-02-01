@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<image schemaversion="6.4" name="MultiCortex_1.0.3" displayname='MultiCortex 1.0.3'>
+    <description type="system">
+        <author>Alessandro de Oliveira Faria (CABELO)</author>
+        <contact>cabelo@opensuse.org</contact>
+        <specification>MultiCortex 1.0.3</specification>
+    </description>    
+    <preferences >
+	    <type image="iso" primary="true" flags="overlay" hybrid="true" firmware="uefi"  kernelcmdline="splash" hybridpersistent_filesystem="ext4" hybridpersistent="true" mediacheck="true"  />
+	    <version>1.15.6</version>
+            <packagemanager>zypper</packagemanager>
+            <locale>pt_BR</locale>
+            <keytable>br</keytable>
+            <timezone>UTC</timezone>
+            <rpm-excludedocs>true</rpm-excludedocs>
+            <rpm-check-signatures>false</rpm-check-signatures>
+            <bootsplash-theme>studio</bootsplash-theme>
+	    <bootloader-theme>studio</bootloader-theme>
+    </preferences>
+    <users>
+        <user password="$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0" home="/root" name="root" groups="root"/>
+    </users>
+    <users >
+        <user password="$1$Ox48k8VQ$PMrwjyY9Yak/sXnWDiq2q1" home="/home/tux" name="tux" groups="users" shell="/bin/bash"/>
+    </users>    
+    <repository type="rpm-md" alias="kiwi" priority="1">
+        <source path="obs://Virtualization:Appliances:Builder/openSUSE_Leap_15.6"/>
+    </repository>
+
+    <repository type="rpm-md" >
+        <source path="http://mirrorcache-br-2.opensuse.org/distribution/leap/15.6/repo/oss/"/>
+    </repository>
+
+    <repository type='rpm-md'>
+        <source path='http://download.opensuse.org/update/leap/15.6/oss/'/>
+    </repository>
+    <repository type='rpm-md'>
+        <source path='http://download.opensuse.org/distribution/leap/15.6/repo/oss/'/>
+    </repository>
+    <repository type='rpm-md'  >
+        <source path='http://download.opensuse.org/repositories/home:/cabelo:/jax/15.6/'/>
+    </repository>
+    <repository type='rpm-md'  >
+        <source path='http://download.opensuse.org/repositories/home:/cabelo:/innovators/15.6/'/>
+    </repository>
+    <packages type="image" patternType='onlyRequired'>
+        <package name="checkmedia"/>
+        <package name='NetworkManager-gnome'/>
+        <package name='ucode-intel'/>
+        <package name='libdrm_intel1'/>
+        <package name='xf86-video-intel'/>
+        <package name='vaapi-intel-driver'/>
+        <package name='wpa_supplicant-gui'/>
+        <package name='mpt-firmware'/>
+        <package name='adaptec-firmware'/>
+        <package name='atmel-firmware'/>
+        <package name='FirmwareUpdateKit'/>
+        <package name='bluez-firmware'/>
+        <package name='alsa-firmware'/>
+        <package name='ipw-firmware'/>
+        <package name='iw'/>
+        <package name='sax3'/>
+        <package name='NetworkManager-gnome-lang'/>
+        <package name='cheese-lang'/>
+        <package name='cheese'/>
+        <package name='opencv'/>
+        <package name='MozillaFirefox'/>
+
+	<package name='gcc-c++'/>
+	<package name='cmake'/> 
+	<package name='make'/> 
+	<package name='pkg-config'/> 
+	<package name='gcc'/> 
+	<package name='opencl-headers'/>
+	<package name='ocl-icd-devel'/> 
+	<package name='opencv-devel'/> 
+	<package name='pugixml-devel'/>
+	<package name='patchelf'/>
+	<package name='opencl-cpp-headers'/>
+	<package name='python3-devel'/>
+	<package name='ccache'/>
+	<package name='nlohmann_json-devel'/>
+	<package name='ninja'/>
+	<package name='scons'/>
+	<package name='git'/>
+	<package name='git-lfs'/>
+	<package name='patchelf'/>
+	<package name='fdupes'/>
+	<package name='ShellCheck'/>
+	<package name='tbb-devel'/>
+	<package name='libva-devel'/>
+	<package name='snappy-devel'/>
+	<package name='ocl-icd-devel'/>
+	<package name='python3-base'/>
+	<package name='opencl-headers'/>
+	<package name='zlib-devel'/>
+	<package name='gflags-devel-static'/>
+	<package name='python3-pip'/>
+	<package name='protobuf-devel'/>  
+	<package name='ade-devel'/>
+
+
+        <package name="kernel-firmware" />
+        <package name='atmel-firmware'/>
+        <package name='adaptec-firmware'/>
+
+        <package name='patterns-gnome-gnome_imaging'/>
+        <package name='patterns-gnome-gnome_basis_opt'/>  
+        <package name='patterns-gnome-gnome_basis'/>
+        <package name='patterns-gnome-gnome_x11'/>
+        <package name='patterns-gnome-gnome_utilities'/>
+        <package name='patterns-gnome-sw_management_gnome'/>
+        <package name='patterns-gnome-gnome_internet'/>
+        <package name='patterns-gnome-gnome_basic'/>
+
+	<package name='wallpaper-branding-openSUSE'/>
+	<package name='patterns-gnome-gnome_yast'/>
+
+        <package name='gnome-power-manager'/>
+	<package name='gnome-terminal'/>
+	<package name='gnome-terminal-lang'/>
+        <package name='gnome-desktop'/>
+        <package name='gnome-desktop-lang'/>
+        <package name='gnome-keyring-lang'/>
+        <package name='gnome-themes-accessibility-gtk2'/>
+        <package name='gnome-themes-accessibility'/>
+        <package name='zypper'/>
+	<package name='gtk3-branding-openSUSE'/>
+
+	<package name='gnome-themes'/>
+ 	<package name='gnome-themes-accessibility'/>
+	<package name='gnome-themes-accessibility-gtk2'/>
+	<package name='gnome-themes-extras'/>
+	<package name='gnome-themes-lang'/>
+
+        <package name='gtk3-branding-openSUSE'/>
+        <package name='gvfs-backends'/>
+        <package name='libgnomesu'/>
+        <package name='gnote'/>
+        <package name='yast2-control-center-gnome'/>
+
+        <package name='sax3'/>
+        <package name='x11-tools'/>
+        <package name='xorg-x11'/>
+        <package name='xorg-x11-driver-input'/>
+        <package name='xorg-x11-driver-video'/>
+        <package name='xorg-x11-fonts'/>
+
+        <package name='grub2-branding-openSUSE'/>
+        <package name='gfxboot-branding-openSUSE'/>
+        <package name='yast2-x11'/>
+        <package name='jeos-firstboot'/>
+        <package name='e2fsprogs'/>
+        <package name='iputils'/>
+ 
+        <package name="patterns-openSUSE-base"/>
+        <package name="plymouth-branding-openSUSE" bootinclude="true"/>
+        <package name="plymouth-dracut"/>
+        <package name="plymouth-plugin-script"/>
+        <package name="grub2-branding-openSUSE" bootinclude="true"/>
+        <package name="ifplugd"/>
+        <package name="iputils"/>
+        <package name="vim"/>
+        <package name="grub2"/>
+        <package name="shim" arch="x86_64" bootinclude="true"/>
+        <package name="grub2-x86_64-efi" arch="x86_64"  bootinclude="true" />
+        <package name='patterns-openSUSE-base'/>
+        
+        <package name="grub2-i386-pc"/>
+        <package name="syslinux"/>
+        <package name="lvm2"/>
+        <package name="plymouth"/>
+        <package name="fontconfig"/>
+        <package name="fonts-config"/>
+        <package name="tar"/>
+        <package name="parted"/>
+        <package name="openssh"/>
+        <package name="iproute2"/>
+        <package name="less"/>
+        <package name="bash-completion"/>
+        <package name="dhcp-client"/>
+        <package name="which"/>
+        <package name="kernel-default" bootinclude='true' />
+        <package name="timezone"/>  
+        <package name='gsettings-backend-dconf'/>
+        <archive name='plymouth.tar' bootinclude='true'/>
+        
+        <package name='gfxboot-devel' bootinclude='true' />
+        <archive name='gdm.tar' bootinclude='true'/>       
+        
+        <package name="patterns-openSUSE-base"/>
+        <package name="plymouth-branding-openSUSE"/>
+        <package name="plymouth-dracut"/>
+        <package name="grub2-branding-openSUSE"/>
+        <package name='NetworkManager-gnome'/>
+        <package name="ifplugd"/>
+        <package name="iputils"/>
+        <package name="vim"/>
+        <package name="grub2"/>
+        <package name="grub2-i386-pc"/>
+        <package name="syslinux"/>
+        <package name="lvm2"/>
+        <package name="plymouth"/>
+        <package name="fontconfig"/>
+        <package name="fonts-config"/>
+        <package name="tar"/>
+        <package name="parted"/>
+        <package name="openssh"/>
+        <package name="iproute2"/>
+        <package name="less"/>
+        <package name="bash-completion"/>
+        <package name="dhcp-client"/>
+        <package name="which"/>
+        <package name="nodejs-common"/>
+        <package name="nodejs20"/>
+        <package name="npm20"/>
+        <package name="ollama"/>
+        <package name="nvidia-driver-G06-kmp-default"/>
+        <package name="nvidia-utils-G06"/>
+        <package name="nvidia-compute-utils-G06"/>
+        <package name="multicortex-chat-ui"/>
+	<package name="timezone"/>
+        <archive name='plymouth.tar' bootinclude='true'/>
+        <package name='gfxboot-devel' bootinclude='true' />
+        <archive name='gdm.tar' bootinclude='true'/>
+	
+    </packages>
+    <packages type="iso">
+        <package name='grub2-branding-openSUSE'/>
+        <package name="gfxboot-branding-openSUSE"/>
+        <package name="dracut-kiwi-live"/>
+    </packages>
+    <packages type="oem">
+        <package name="gfxboot-branding-openSUSE"/>
+        <package name="dracut-kiwi-oem-repart"/>
+        <package name="dracut-kiwi-oem-dump"/>
+    </packages>
+    <packages type="bootstrap">
+        <package name="udev"/>
+        <package name="filesystem"/>
+        <package name="glibc-locale"/>
+        <package name="cracklib-dict-full"/>
+        <package name="ca-certificates"/>
+        <package name="openSUSE-release"/>
+        <package name='glibc-locale'/>
+        <package name='module-init-tools'/>
+
+    </packages>
+</image>
