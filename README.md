@@ -1,7 +1,7 @@
 
 ![studio_wallpaper2](https://github.com/user-attachments/assets/a30e4ded-1e52-42aa-9341-d9694f5e10f5)
 
-# MultiCortex EXO: AI Cluster OpenSource!
+# MultiCortex EXO: Bootable AI Cluster OpenSource!
 
 <img align="left" width="240" height="240" src="https://github.com/user-attachments/assets/732a31fa-116a-4010-b848-d9c67c9c5877">
 **MultiCortex EXO** (https://github.com/cabelo/multicortex-exo) is a portable system that can be booted from a USB flash drive, with the fantastic EXO project pre-installed (https://github.com/exo-explore/exo). It allows any computer to become a node for creating a decentralized AI framework. It allows pooling of computing power from multiple devices, leveraging CPUs, GPUs, NPUs, and other accelerators.
