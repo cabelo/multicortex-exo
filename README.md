@@ -10,7 +10,7 @@ Unlike other distributed inference frameworks, exo does not use a master-worker 
 
 The project started with a team of AI researchers and engineers, and as a member of the openSUSE community, I developed this bootable Linux solution so that anyone can create an AI cluster without needing prior knowledge of GNU/Linux or advanced AI techniques.
 
-Based on the openSUSE for Innovators initiative and JAX technology, MultiCortex EXO uses the power of open-source software to democratize access to AI.
+Based on the openSUSE for Innovators initiative and JAX technology (openVINO and oneAPI), MultiCortex EXO uses the power of open-source software to democratize access to AI.
 
 Furthermore, the solution prioritizes privacy and control over user data, ensuring that their information is not shared or made available to large corporations.
 
